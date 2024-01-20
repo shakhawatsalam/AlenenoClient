@@ -8,6 +8,7 @@ import Cart from "../pages/Main/Cart";
 import Home from "../pages/Main/Home";
 import TopRated from "../pages/Main/TopRated";
 import CourseDetails from "../pages/Main/CourseDetails";
+import { Login } from "../pages/Main/Login";
 
 const routes = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const routes = createBrowserRouter([
       {
         path: "course/:id",
         element: <CourseDetails />,
+      },
+      {
+        path: "login",
+        element: <Login />,
       },
       {
         path: "about",

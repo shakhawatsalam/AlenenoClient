@@ -9,14 +9,13 @@ const Home = () => {
   // const query = {};
   const [searchTerm, setSearchTerm] = useState("");
   const [query, setQuery] = useState({});
-  // console.log(searchTerm);
-  // query["searchTerm"] = searchTerm;
+
   useEffect(() => {
     const debounceTimeout = setTimeout(() => {
       setQuery({ ...query, searchTerm });
-    }, 1000); // Adjust the delay (in milliseconds) based on your preference
+    }, 1000);
 
-    return () => clearTimeout(debounceTimeout); // Clear the timeout on component unmount or when searchTerm changes
+    return () => clearTimeout(debounceTimeout);
   }, [query, searchTerm]);
 
   const { data, isLoading, error } = useGetAllCourseQuery({ ...query });
