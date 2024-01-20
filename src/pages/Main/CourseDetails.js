@@ -13,6 +13,8 @@ const CourseDetails = () => {
 
   return (
     <div className='max-w-2xl mx-auto mt-8 p-8 bg-white shadow-md rounded-md'>
+      <h1 className='text-4xl font-bold mb-4'>Course Details</h1>
+
       <img
         src='https://th.bing.com/th/id/OIP.zXu2vsYPZ5mqF0tOB7kupAHaHa?w=512&h=512&rs=1&pid=ImgDetMain'
         alt={course?.name}

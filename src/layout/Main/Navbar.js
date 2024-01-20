@@ -4,7 +4,11 @@ import { BsFillCartFill } from "react-icons/bs";
 import { IoIosListBox } from "react-icons/io";
 import { BiSearchAlt } from "react-icons/bi";
 
-const Navbar = () => {
+const Navbar = ({ setSearchTerm, searchTerm }) => {
+  const handleInputChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
   return (
     <nav className='h-14 bg-indigo-200 rounded-full m-2 max-w-7xl mx-auto px-5'>
       <ul className='h-full  mx-auto flex justify-between items-center gap-3 font-semibold text-indigo-900'>
@@ -16,8 +20,11 @@ const Navbar = () => {
             type='text'
             name='search'
             id='search'
+            value={searchTerm}
+            onChange={handleInputChange}
+            placeholder='Search...'
           />
-          <button>
+          <button type='submit'>
             <BiSearchAlt />
           </button>
         </li>
