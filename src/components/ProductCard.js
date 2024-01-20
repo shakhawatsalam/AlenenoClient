@@ -1,62 +1,23 @@
 import React from "react";
-import { BiListPlus } from "react-icons/bi";
-import { useLocation } from "react-router-dom";
-import { MdDeleteForever } from "react-icons/md";
-import { useDispatch } from "react-redux";
-import { addToCart, removeFromCart } from "../features/cart/cartSlice";
+import { Link } from "react-router-dom";
 
-const ProductCard = ({  }) => {
-  const dispatch = useDispatch();
-  const { pathname } = useLocation();
+const ProductCard = ({ course }) => {
   return (
     <div className='shadow-lg relative rounded-3xl border p-3 flex flex-col text-indigo-900'>
-      {pathname.includes("cart") && (
-        <div className='rounded-full grid place-items-center absolute top-2 right-2 bg-indigo-500 text-white h-8 w-8 font-bold '>
-          <p> aa </p>
-        </div>
-      )}
       <div className='h-52 w-52 mx-auto'>
-        <img src="" alt="" />
+        <img
+          src='https://th.bing.com/th/id/OIP.zXu2vsYPZ5mqF0tOB7kupAHaHa?w=512&h=512&rs=1&pid=ImgDetMain'
+          alt=''
+        />
       </div>
-      <h1 className='font-bold text-center'>aa</h1>
-      <p className='text-center font-semibold mb-3'>Rating: </p>
-      <div className=' flex-1'>
-        {/* <ul className='space-y-2'>
-          {product.keyFeature.map((feature) => {
-            return (
-              <li key={feature} className='text-sm '>
-                {feature}
-              </li>
-            );
-          })}
-        </ul> */}
-      </div>
-      {/* <div className='flex gap-2 mt-5'>
-        {!pathname.includes("cart") && (
-          <button
-            onClick={() => dispatch(addToCart(product))}
-            className='bg-indigo-500 rounded-full py-1 px-2 flex-1 text-white text-bold'>
-            Add to cart
-          </button>
-        )}
-
-        {!pathname.includes("cart") && (
-          <button
-            title='Add to wishlist'
-            className='bg-indigo-500  py-1 px-2 rounded-full'>
-            <BiListPlus className='text-white' />
-          </button>
-        )}
-        {pathname.includes("cart") && (
-          <button
-            onClick={() => dispatch(removeFromCart(product))}
-            title='Remove'
-            className='flex justify-between px-3 bg-red-500 text-white p-1 rounded-full flex-1'>
-            <p>Remove</p>
-            <MdDeleteForever size='25' />
-          </button>
-        )}
-      </div> */}
+      <h1 className='font-bold text-center'>{course?.name}</h1>
+      <p className='text-center font-semibold mb-3'>{course?.instructor}</p>
+      <Link
+        to={`course/${course?._id}`}
+        className='bg-indigo-500 hover:bg-indigo-700 text-white font-thin py-1 px-2 rounded-lg text-center'>
+        Course Details
+      </Link>
+      <div className=' flex-1'></div>
     </div>
   );
 };

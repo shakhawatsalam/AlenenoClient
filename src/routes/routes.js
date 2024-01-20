@@ -7,6 +7,7 @@ import About from "../pages/Main/About";
 import Cart from "../pages/Main/Cart";
 import Home from "../pages/Main/Home";
 import TopRated from "../pages/Main/TopRated";
+import CourseDetails from "../pages/Main/CourseDetails";
 
 const routes = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const routes = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "course/:id",
+        element: <CourseDetails />,
       },
       {
         path: "about",
