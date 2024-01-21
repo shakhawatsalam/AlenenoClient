@@ -2,14 +2,21 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useGetSingleCourseQuery } from "../../redux/course/courseApi";
 import Loader from "../../components/Loader";
+import { useEnrollMutation } from "../../redux/auth/auth";
 
 const CourseDetails = () => {
   const { id } = useParams();
+  const [enroll] = useEnrollMutation();
   const { data, isLoading } = useGetSingleCourseQuery(id);
   const course = data ? data?.data : {};
   if (isLoading) {
     return <Loader />;
   }
+
+  const enrollCourse = async () => {
+    await enroll({id});
+    console.log(id)
+  };
 
   return (
     <div className='max-w-2xl mx-auto mt-8 p-8 bg-white shadow-md rounded-md'>
@@ -59,6 +66,11 @@ const CourseDetails = () => {
           ))}
         </ul>
       </div>
+      <button
+        onClick={() => enrollCourse(course._id)}
+        className='w-full h-10 bg-indigo-500 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring focus:border-indigo-500'>
+        Enroll
+      </button>
     </div>
   );
 };

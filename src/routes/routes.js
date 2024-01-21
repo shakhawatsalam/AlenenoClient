@@ -1,15 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import Dashboard from "../layout/Dashboard/Dashboard";
 import Main from "../layout/Main/Main";
-import AddProduct from "../pages/Dashboard/AddProduct";
-import ProductList from "../pages/Dashboard/ProductList";
 import About from "../pages/Main/About";
-import Cart from "../pages/Main/Cart";
 import Home from "../pages/Main/Home";
 import TopRated from "../pages/Main/TopRated";
 import CourseDetails from "../pages/Main/CourseDetails";
 import { Login } from "../pages/Main/Login";
 import Signup from "../pages/Main/Signup";
+import { ProtectedRoute } from "../components/ProtectedRoute";
+import MyCourses from "../pages/Dashboard/MyCourses";
 
 const routes = createBrowserRouter([
   {
@@ -18,11 +17,19 @@ const routes = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: (
+          <ProtectedRoute>
+            <Home />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "course/:id",
-        element: <CourseDetails />,
+        element: (
+          <ProtectedRoute>
+            <CourseDetails />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "login",
@@ -40,10 +47,6 @@ const routes = createBrowserRouter([
         path: "top-rated",
         element: <TopRated />,
       },
-      {
-        path: "cart",
-        element: <Cart />,
-      },
     ],
   },
   {
@@ -52,11 +55,7 @@ const routes = createBrowserRouter([
     children: [
       {
         path: "/dashboard",
-        element: <ProductList />,
-      },
-      {
-        path: "add-product",
-        element: <AddProduct />,
+        element: <MyCourses />,
       },
     ],
   },

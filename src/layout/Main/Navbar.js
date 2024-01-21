@@ -32,12 +32,6 @@ const Navbar = ({ setSearchTerm, searchTerm }) => {
           <Link to='/'>Home</Link>
         </li>
         <li>
-          <Link to='/top-rated'>Top Rated</Link>
-        </li>
-        <li>
-          <Link to='/about'>About</Link>
-        </li>
-        <li>
           <Link to='/dashboard'>Dashboard</Link>
         </li>
         <Link to='/'>
