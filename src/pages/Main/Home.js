@@ -18,14 +18,12 @@ const Home = () => {
     return () => clearTimeout(debounceTimeout);
   }, [query, searchTerm]);
 
-  const { data, isLoading, error } = useGetAllCourseQuery({ ...query });
+  const { data, isLoading } = useGetAllCourseQuery({ ...query });
 
   const courses = data?.data;
   if (isLoading) {
     return <Loader />;
   }
-  // * for Toggle buttons
-  const activeClass = "text-white  bg-indigo-500 border-white";
 
   return (
     <>

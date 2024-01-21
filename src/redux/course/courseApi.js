@@ -9,6 +9,7 @@ const courseApi = api.injectEndpoints({
         method: "GET",
         params: arg,
       }),
+      providesTags: ["course"],
     }),
     // * Get Single Course
     getSingleCourse: builder.query({

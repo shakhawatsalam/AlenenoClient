@@ -1,12 +1,14 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { useGetSingleCourseQuery } from "../../redux/course/courseApi";
 import Loader from "../../components/Loader";
 import { useEnrollMutation } from "../../redux/auth/auth";
+import toast from "react-hot-toast";
 
 const CourseDetails = () => {
   const { id } = useParams();
-  const [enroll] = useEnrollMutation();
+  const navigate = useNavigate();
+  const [enroll, { isSuccess }] = useEnrollMutation();
   const { data, isLoading } = useGetSingleCourseQuery(id);
   const course = data ? data?.data : {};
   if (isLoading) {
@@ -14,9 +16,14 @@ const CourseDetails = () => {
   }
 
   const enrollCourse = async () => {
-    await enroll({id});
-    console.log(id)
+    await enroll({ id });
   };
+  if (isSuccess) {
+    navigate("/dashboard");
+    toast.success("Course Enrolled Successfully", {
+      id: 1,
+    });
+  }
 
   return (
     <div className='max-w-2xl mx-auto mt-8 p-8 bg-white shadow-md rounded-md'>

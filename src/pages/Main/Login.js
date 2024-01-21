@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useLogInMutation } from "../../redux/auth/auth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { setToLocalStorage } from "../../utils/local-storage";
 
 export const Login = () => {
@@ -83,7 +83,12 @@ export const Login = () => {
               className='w-full h-10 mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-indigo-500'
             />
           </div>
-
+          <p className='font-thin'>
+            If you don't have account please
+            <span className='text-indigo-500'>
+              <Link to={'/signup'}> Sign Up</Link>
+            </span>
+          </p>
           {isLoading ? (
             <button
               type='submit'

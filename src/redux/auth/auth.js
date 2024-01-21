@@ -19,16 +19,29 @@ const authApi = api.injectEndpoints({
         body: data,
       }),
     }),
-    // * Login
+    // * Enroll
     enroll: builder.mutation({
       query: (id) => ({
         url: "users/enroll",
         method: "PUT",
         body: id,
       }),
+      invalidatesTags: ["course"],
+    }),
+    // * Enroll
+    myCourse: builder.query({
+      query: () => ({
+        url: "users/my-course",
+        method: "GET",
+      }),
+      providesTags: ["course"],
     }),
   }),
 });
 
-export const { useLogInMutation, useSignUpMutation, useEnrollMutation } =
-  authApi;
+export const {
+  useLogInMutation,
+  useSignUpMutation,
+  useEnrollMutation,
+  useMyCourseQuery,
+} = authApi;

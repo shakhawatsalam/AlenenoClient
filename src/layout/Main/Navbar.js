@@ -1,12 +1,22 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BsFillCartFill } from "react-icons/bs";
 import { IoIosListBox } from "react-icons/io";
 import { BiSearchAlt } from "react-icons/bi";
 
 const Navbar = ({ setSearchTerm, searchTerm }) => {
+  const navigate = useNavigate();
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
+  };
+
+  const handleLogoutClick = () => {
+    console.log("hello");
+    if (typeof window === "undefined") {
+      return;
+    }
+    navigate('/login');
+    localStorage.removeItem("accessToken");
   };
 
   return (
@@ -33,6 +43,13 @@ const Navbar = ({ setSearchTerm, searchTerm }) => {
         </li>
         <li>
           <Link to='/dashboard'>Dashboard</Link>
+        </li>
+        <li>
+          <button
+            class='bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600'
+            onClick={handleLogoutClick}>
+            Log Out
+          </button>
         </li>
         <Link to='/'>
           <li title='Wishlist' className='bg-indigo-500 p-2 rounded-full'>

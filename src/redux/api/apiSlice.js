@@ -8,7 +8,7 @@ if (typeof window !== "undefined") {
 export const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:5000/api/",
+    baseUrl: "https://alemeno-server-seven.vercel.app/api",
     prepareHeaders: (headers) => {
       if (accessToken !== null) {
         headers.set("authorization", accessToken);
@@ -16,6 +16,6 @@ export const api = createApi({
       }
     },
   }),
-  tagTypes: ["user", "singleUser", "team"],
+  tagTypes: ["user", "course"],
   endpoints: () => ({}),
 });
